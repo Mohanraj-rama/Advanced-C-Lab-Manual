@@ -15,13 +15,35 @@ Else
 6.	Return 0
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+struct eligible {
+    int age;
+    char n[50];
+};
 
-
+int main() {
+    struct eligible e[5];
+    int i;
+    for(i=0;i<2;i++){
+        scanf("%s", e[i].n);
+        scanf("%d", &e[i].age);
+    }
+    for(i=0;i<2;i++){
+        if(e[i].age <= 6)
+            printf("Vaccine Eligibility: No\n");
+        else
+            printf("Vaccine Eligibility: Yes\n");
+        printf("%s %d\n", e[i].n, e[i].age);
+    }
+    return 0;
+}
+```
 Output:
 
-//paste your output here
+<img width="1519" height="1016" alt="image" src="https://github.com/user-attachments/assets/a1c6f0db-530e-4774-98c3-33eca4531eb8" />
+
 
 
 Result:
@@ -43,19 +65,33 @@ Algorithm:
 7.	Return 0
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+struct numbers {
+    int a;
+    int b;
+};
 
+struct numbers add(struct numbers x) {
+    struct numbers r;
+    r.a = x.a + x.b;
+    return r;
+}
 
-
-
+int main() {
+    struct numbers n, res;
+    printf("ENTER THE NUMBER:");
+    scanf("%d", &n.a);
+    printf("ENTER THE NUMBER:");
+    scanf("%d", &n.b);
+    res = add(n);
+    printf("RESULT:%d\n", res.a);
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
+<img width="1510" height="984" alt="image" src="https://github.com/user-attachments/assets/9c9dbc4c-a17b-4f91-965d-092970bbe2e1" />
 
 Result:
 Thus, the program is verified successfully
@@ -85,27 +121,30 @@ Use scanf to input the file name into the name array.
 5.	Return 0 to indicate successful program execution.
  
 Program:
+#include <stdio.h>
+```
+int main() {
+    FILE *p;
+    char name[50];
 
-//type your code here
+    scanf("%s", name);
+    printf("File %s created successfully\n", name);
 
+    p = fopen(name, "w");
+    if(p == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
 
+    printf("File opened successfully\n");
+    fclose(p);
+    printf("File closed\n");
 
-
+    return 0;
+}
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
-
-
-
-
-
-
+<img width="1293" height="863" alt="image" src="https://github.com/user-attachments/assets/b735b10b-d67e-4d80-b88c-09a39217c90d" />
 Result:
 Thus, the program is verified successfully
  
@@ -132,21 +171,40 @@ Use scanf to input the file name into the name array and the number of strings i
 5.	Return 0 to indicate successful program execution.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    FILE *p;
+    char name[50], text[100];
+    int num, i;
 
+    scanf("%s", name);
+    scanf("%d", &num);
 
+    p = fopen(name, "w");
+    if(p == NULL) {
+        printf("Error opening file\n");
+        return 1;
+    }
 
+    printf("File opened successfully\n");
 
+    for(i = 0; i < num; i++) {
+        scanf("%s", text);
+        fputs(text, p);
+        fputs("\n", p);
+    }
+
+    fclose(p);
+    printf("Data added successfully\n");
+
+    return 0;
+}
+
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
+<img width="1311" height="788" alt="image" src="https://github.com/user-attachments/assets/9e390b32-da48-4f25-8713-1345919e0c1e" />
 
 Result:
 Thus, the program is verified successfully
@@ -186,21 +244,42 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
 
-//type your code here
+struct student {
+    char name[50];
+    int marks;
+};
 
+int main() {
+    int n, i;
+    struct student *s;
 
+    scanf("%d", &n);
 
+    s = (struct student*)malloc(n * sizeof(struct student));
+    if(s == NULL) {
+        printf("Memory not allocated\n");
+        return 1;
+    }
 
+    for(i = 0; i < n; i++) {
+        scanf("%s", s[i].name);
+        scanf("%d", &s[i].marks);
+    }
+
+    for(i = 0; i < n; i++) {
+        printf("%s %d\n", s[i].name, s[i].marks);
+    }
+
+    free(s);
+    return 0;
+}
+
+```
 Output:
-
-
-//paste your output here
-
-
-
-
-
-
+<img width="1501" height="795" alt="image" src="https://github.com/user-attachments/assets/863cddfd-352b-47e1-8476-149ea97baefe" />
 Result:
 Thus, the program is verified successfully
