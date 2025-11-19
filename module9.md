@@ -12,14 +12,46 @@ Algorithm:
 7.	Use the display function to visualize the stack's contents
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int stack[50];
+int top = -1;
+
+void display() {
+    int i;
+    if (top == -1) {
+        printf("Stack is empty");
+        return;
+    }
+    for (i = top; i >= 0; i--) {
+        printf("%d ", stack[i]);
+    }
+}
+
+void push(int x) {
+    stack[++top] = x;
+}
+
+void pop() {
+    if (top != -1) top--;
+}
+
+int main() {
+    push(10);
+    push(20);
+    push(30);
+
+    display();
+
+    return 0;
+}
+
+```
 
 Output:
 
-//paste your output here
-
-
+<img width="895" height="986" alt="image" src="https://github.com/user-attachments/assets/c9e2daef-b221-47d0-a963-4f76d192be55" />
 
 Result:
 Thus, the program to display stack elements using an array is verified successfully.
@@ -35,14 +67,33 @@ Algorithm:
 4.	Call the push function as needed.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int size = 50;
+int top = -1;
+float stack[50];
 
+void push(float x) {
+    if (top == size - 1) {
+        printf("Stack Overflow");
+        return;
+    }
+    stack[++top] = x;
+}
+
+int main() {
+    float n;
+    scanf("%f", &n);
+    push(n);
+    printf("%.2f", stack[top]);
+    return 0;
+}
+
+```
 Output:
 
-//paste your output here
-
-
+<img width="875" height="896" alt="image" src="https://github.com/user-attachments/assets/9673fe7f-fb15-4961-9f72-e1b5a1fe6e1c" />
 
 
 Result:
@@ -61,13 +112,47 @@ Algorithm:
 4.	Call the display function and perform other queue operations as needed.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int queue[50];
+int front = -1;
+int rear = -1;
+
+void display() {
+    int i;
+    if (front == -1) {
+        printf("Queue is empty");
+        return;
+    }
+    for (i = front; i <= rear; i++) {
+        printf("%d ", queue[i]);
+    }
+}
+
+void enqueue(int x) {
+    if (rear == 49) return;
+    if (front == -1) front = 0;
+    queue[++rear] = x;
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+
+    display();
+
+    return 0;
+}
+
+```
+
+
 
 Output:
 
-//paste your output here
-
+<img width="685" height="913" alt="image" src="https://github.com/user-attachments/assets/81f99c0c-ecd1-4b18-aeee-4dc3bc36f8cd" />
 
 Result:
 Thus, the program to display queue elements using array is verified successfully.
@@ -85,12 +170,35 @@ Algorithm:
 4.	Call the enqueue function as needed.
 
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int size = 50;
+int front = -1;
+int rear = -1;
+float queue[50];
 
+void enqueue(float x) {
+    if (rear == size - 1) {
+        printf("Queue Overflow");
+        return;
+    }
+    if (front == -1) front = 0;
+    queue[++rear] = x;
+}
+
+int main() {
+    float n;
+    scanf("%f", &n);
+    enqueue(n);
+    printf("%.2f", queue[rear]);
+    return 0;
+}
+
+```
 Output:
 
-//paste your output here
+<img width="756" height="909" alt="image" src="https://github.com/user-attachments/assets/1111a02f-5cb8-4100-a323-d592f2834d8f" />
 
 Result:
 Thus, the program to insert elements in queue using array is verified successfully.
@@ -120,13 +228,46 @@ o	After deletion, check if the front pointer has passed the rear pointer (front 
 
 
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int front = -1;
+int rear = -1;
+float queue[50];
 
+void dequeue() {
+    if (front == -1) {
+        printf("Queue is empty");
+        return;
+    }
+    front++;
+    if (front > rear) {
+        front = -1;
+        rear = -1;
+    }
+}
+
+void enqueue(float x) {
+    if (rear == 49) return;
+    if (front == -1) front = 0;
+    queue[++rear] = x;
+}
+
+int main() {
+    enqueue(100.5);
+    enqueue(10.5);
+    dequeue();
+    enqueue(20.5);
+    
+    if (front != -1) printf("%.2f", queue[front]);
+    return 0;
+}
+
+
+```
 Output:
 
-//paste your output here
-
+<img width="706" height="912" alt="image" src="https://github.com/user-attachments/assets/ff024827-3643-4a89-9e25-106504b02951" />
 
 Result:
 Thus, the function that deletes an element from a queue implemented using an array is verified successfully.
