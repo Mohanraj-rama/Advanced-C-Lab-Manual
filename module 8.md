@@ -15,20 +15,33 @@ Algorithm:
 4.	Exit the program.
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n;
+    scanf("%d", &n);
 
+    switch(n) {
+        case 5:  printf("seventy one"); break;
+        case 6:  printf("seventy two"); break;
+        case 7:  printf("seventy three"); break;
+        case 8:  printf("seventy four"); break;
+        case 9:  printf("seventy five"); break;
+        case 10: printf("seventy six"); break;
+        case 11: printf("seventy seven"); break;
+        case 12: printf("seventy eight"); break;
+        case 13: printf("seventy nine"); break;
+        default: printf("Greater than 13");
+    }
 
+    return 0;
+}
 
-
+```
 Output:
 
-
-//paste your output here
-
-
-
-
+<img width="1313" height="800" alt="image" src="https://github.com/user-attachments/assets/1c26e884-8b22-443a-b60a-a7aa705bf2df" />
 
 
 Result:
@@ -46,19 +59,31 @@ Algorithm:
 6.	End
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    char a[50];
+    int i, h, c;
 
+    scanf("%s", a);
 
+    for (h = 0; h <= 3; h++) {
+        c = 0;
+        for (i = 0; a[i] != '\0'; i++) {
+            if (a[i] - '0' == h)
+                c++;
+        }
+        printf("%d ", c);
+    }
 
+    return 0;
+}
 
+```
 Output:
 
-
-//paste your output here
-
-
-
+<img width="722" height="811" alt="image" src="https://github.com/user-attachments/assets/66cf6551-7192-484e-8ec2-ece4ce911cbf" />
 
 
 
@@ -83,20 +108,66 @@ Free the memory allocated for each string in s Free the memory allocated for s
 7.	End
  
 Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-//type your code here
+int cmp(const void *a, const void *b) {
+    return strcmp(*(char **)a, *(char **)b);
+}
 
+int next_perm(char **s, int n) {
+    int i = n - 2;
+    while (i >= 0 && strcmp(s[i], s[i+1]) >= 0) i--;
+    if (i < 0) return 0;
+    int j = n - 1;
+    while (strcmp(s[j], s[i]) <= 0) j--;
+    char *temp = s[i];
+    s[i] = s[j];
+    s[j] = temp;
+    int l = i + 1, r = n - 1;
+    while (l < r) {
+        temp = s[l];
+        s[l] = s[r];
+        s[r] = temp;
+        l++; r--;
+    }
+    return 1;
+}
 
+int main() {
+    int n, i;
+    char **s;
 
+    scanf("%d", &n);
+
+    s = malloc(n * sizeof(char*));
+    for (i = 0; i < n; i++) {
+        s[i] = malloc(50);
+        scanf("%s", s[i]);
+    }
+
+    qsort(s, n, sizeof(char*), cmp);
+
+    do {
+        for (i = 0; i < n; i++)
+            printf("%s ", s[i]);
+        printf("\n");
+    } while (next_perm(s, n));
+
+    for (i = 0; i < n; i++)
+        free(s[i]);
+    free(s);
+
+    return 0;
+}
+
+```
 
 Output:
 
-
-//paste your output here
-
-
-
-
+<img width="502" height="160" alt="image" src="https://github.com/user-attachments/assets/5672deb6-9a3a-452e-8d33-78e87e761eb4" />
 
 
 Result:
@@ -116,19 +187,40 @@ Algorithm:
 7.	End
  
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int main() {
+    int n, i, j, min, len;
+    scanf("%d", &n);
 
+    len = n * 2 - 1;
 
+    for (i = 0; i < len; i++) {
+        for (j = 0; j < len; j++) {
+            int top = i;
+            int left = j;
+            int right = len - 1 - j;
+            int bottom = len - 1 - i;
 
+            min = top;
+            if (left < min) min = left;
+            if (right < min) min = right;
+            if (bottom < min) min = bottom;
+
+            printf("%d ", n - min);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+
+```
 
 Output:
 
-
-//paste your output here
-
-
-
+<img width="641" height="338" alt="image" src="https://github.com/user-attachments/assets/15cf04d8-bc6a-4334-b676-46775a3fb380" />
 
 
 
@@ -155,18 +247,26 @@ o	Call the square() function and display the result.
 5.	End.
 
 Program:
+```
+#include <stdio.h>
 
-//type your code here
+int square() {
+    int n;
+    scanf("%d", &n);
+    return n * n;
+}
 
+int main() {
+    int result;
+    result = square();
+    printf("%d", result);
+    return 0;
+}
 
-
-
+```
 Output:
 
-
-//paste your output here
-
-
+<img width="1183" height="731" alt="image" src="https://github.com/user-attachments/assets/aedabc10-d94c-406b-870f-bd897be5dfd0" />
 
 
 
